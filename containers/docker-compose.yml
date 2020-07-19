@@ -1,0 +1,29 @@
+version: "3.3"
+
+services:
+    invoice_apache:
+        build:
+          context: apache
+        ports:
+            - "8080:80"
+        volumes:
+            - "../:/var/www/html/:delegated"
+
+    invoice_php:
+        build:
+          context: php7.4
+        volumes:
+            - "../:/var/www/:delegated"
+        environment:
+            - DATABASE_URL=mysql://root:root@invoice_db/invoice
+    invoice_db:
+        build:
+            context: mysql
+        command: --default-authentication-plugin=mysql_native_password --sql_mode=NO_AUTO_VALUE_ON_ZERO
+        ports:
+            - "3306:3306"
+        restart: always
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=invoice
