@@ -31,7 +31,11 @@ class UserLocale
         if (Auth::guard($guard)->check()) {
             $settings = UserSetting::where('user_id', Auth::id())->first();
 
-            App::setLocale(isset($settings->defaultLanguage()->short) ? $settings->defaultLanguage()->short : 'fr');
+            if ($settings instanceof UserSetting) {
+                App::setLocale($settings->defaultLanguage()->short);
+            } else {
+                App::setLocale('fr');
+            }
         }
 
         return $next($request);

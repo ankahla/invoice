@@ -296,9 +296,9 @@ class Invoice extends Model
         }*/
     public function int2str($a)
     {
-        $convert = explode('.', $a);
+        $convert = explode('.', (string)$a);
         if (isset($convert[1]) && '' !== $convert[1]) {
-            $converta = str_pad($convert[1], 3, 0);
+            $converta = str_pad($convert[1], 3, '0');
 
             return $this->int2str($convert[0]).' dinars'.' et '.$this->int2str($converta).' millimes';
         }
