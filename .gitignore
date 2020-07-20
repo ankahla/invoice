@@ -3,3 +3,4 @@
 /composer
 .idea/
 *.cache
+.env
