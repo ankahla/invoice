@@ -24,5 +24,11 @@ class LanguageSeeder extends Seeder
             'name' => 'Frensh',
             'short' => 'fr',
         ]);
+
+        DB::table('languages')->insert([
+            'id' => 3,
+            'name' => 'Arabe',
+            'short' => 'ar',
+        ]);
     }
 }

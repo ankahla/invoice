@@ -18,6 +18,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class LanguageController extends Controller
 {
@@ -57,27 +58,21 @@ class LanguageController extends Controller
         return view('admin.languages.edit', $data);
     }
 
-    /* === END VIEW === */
-
-    /* === C.R.U.D. === */
-    public function store(LanguageRequest $request)
+    public function store(Request $request)
     {
         $rules = [
             'name' => 'required',
             'short_name' => 'required',
         ];
 
-        //$validator = Validator::make(Input::all(), $rules);
-        $validated = $request->validated();
-        var_dump($validated);
-        die;
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->passes()) {
-            $dir = strtolower(Input::get('short_name'));
+            $dir = strtolower($request->get('short_name'));
 
             if (!File::exists(resource_path('lang/'.$dir))) {
                 $store = new Language();
-                $store->name = Input::get('name');
+                $store->name = $request->get('name');
                 $store->short = $dir;
                 $store->save();
 
@@ -112,9 +107,6 @@ class LanguageController extends Controller
         return Redirect::to('language')->with('message', trans('invoice.data_was_deleted'));
     }
 
-    /* === END C.R.U.D. === */
-
-    /* === OTHERS === */
     public function translate(Request $request)
     {
         $locale = $request->get('languageID');
@@ -135,6 +127,4 @@ class LanguageController extends Controller
 
         return Redirect::to('language')->with('message', trans('invoice.data_was_saved'));
     }
-
-    /* === END OTHERS === */
 }

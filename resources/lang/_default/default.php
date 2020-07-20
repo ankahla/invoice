@@ -1020,6 +1020,10 @@ return array(
         "translated"	=> "send invitation"
     ),
     /* === END BUTTONS === */
+    "footer" => array(
+        "original"		=> "Footer",
+        "translated"	=> "Footer"
+    ),
     
     
     
