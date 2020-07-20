@@ -14,12 +14,14 @@ class CurrencySeeder extends Seeder
     public function run()
     {
         DB::table('currencies')->insert([
+            'id' => 1,
             'user_id' => 1,
             'name' => 'DTN',
             'position' => 2,
         ]);
 
         DB::table('currencies')->insert([
+            'id' => 2,
             'user_id' => 2,
             'name' => 'EUR',
             'position' => 1,

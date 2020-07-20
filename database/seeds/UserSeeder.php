@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'id' => 1,
             'role_id' => 1,
             'email' => 'admin@demo.demo',
             'password' => '$2y$10$doxa3f3PHtsVZOGqRQ9R5.meyetZw5eWT9R7PQ7C6ZYmNYP3tvHxG',
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'id' => 2,
             'role_id' => 2,
             'email' => 'user@demo.demo',
             'password' => '$2y$10$doxa3f3PHtsVZOGqRQ9R5.meyetZw5eWT9R7PQ7C6ZYmNYP3tvHxG',

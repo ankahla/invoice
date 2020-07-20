@@ -14,22 +14,27 @@ class InvoiceStatusSeeder extends Seeder
     public function run()
     {
         DB::table('invoice_statuses')->insert([
+            'id' => 1,
             'name' => 'paid',
         ]);
 
         DB::table('invoice_statuses')->insert([
+            'id' => 2,
             'name' => 'unpaid',
         ]);
 
         DB::table('invoice_statuses')->insert([
+            'id' => 3,
             'name' => 'partially paid',
         ]);
 
         DB::table('invoice_statuses')->insert([
+            'id' => 4,
             'name' => 'cancelled',
         ]);
 
         DB::table('invoice_statuses')->insert([
+            'id' => 5,
             'name' => 'overdue',
         ]);
     }

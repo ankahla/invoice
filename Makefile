@@ -37,9 +37,6 @@ clean:
 
 install:
 	@$(EXEC_PHP) php composer install
-	@$(EXEC_PHP) cp pre-commit .git/hooks/pre-commit
-	##@$(EXEC_PHP) cp commit-msg .git/hooks/commit-msg
-	##@$(EXEC_PHP) unzip -q -o web/cms/cms.zip -d web/cms/
 
 all:
 	make install

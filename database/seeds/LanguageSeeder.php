@@ -14,11 +14,13 @@ class LanguageSeeder extends Seeder
     public function run()
     {
         DB::table('languages')->insert([
+            'id' => 1,
             'name' => 'English',
             'short' => 'en',
         ]);
 
         DB::table('languages')->insert([
+            'id' => 2,
             'name' => 'Frensh',
             'short' => 'fr',
         ]);
