@@ -52,12 +52,19 @@ class UserSetting extends Model
 
     public function defaultLanguage()
     {
-        $query = DB::table('user_settings')
+        $defaultLanguage = new Language();
+        $defaultLanguage->short = 'fr';
+
+        $language = DB::table('user_settings')
                 ->join('languages', 'languages.id', '=', 'user_settings.language_id')
                 ->select('languages.id', 'languages.name', 'languages.short')
                 ->where('user_settings.user_id', Auth::id() ? Auth::id() : 1)
                 ->first();
 
-        return $query ?? 'en';
+        if (\is_null($language)) {
+            $language = Language::all()->last();
+        }
+
+        return $language ?? $defaultLanguage;
     }
 }

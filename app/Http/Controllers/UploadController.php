@@ -20,9 +20,6 @@ use Intervention\Image\Facades\Image as UploadImage;
 
 class UploadController extends Controller
 {
-    protected $layout = 'index';
-
-    /* === C.R.U.D. === */
     public function store(Request $request)
     {
         if ($request->hasFile('image')) {
@@ -84,6 +81,4 @@ class UploadController extends Controller
 
         return Redirect::to('setting')->with('message', trans('invoice.data_was_deleted'));
     }
-
-    /* === END C.R.U.D. === */
 }

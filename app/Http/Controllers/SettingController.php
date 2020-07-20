@@ -54,7 +54,6 @@ class SettingController extends Controller
         return view('settings.index', $data);
     }
 
-    /* === C.R.U.D. === */
     public function update(Request $request, $id)
     {
         $rules = [
@@ -97,9 +96,6 @@ class SettingController extends Controller
         return Redirect::to('setting')->with('message', trans('invoice.data_was_updated'));
     }
 
-    /* === END C.R.U.D. === */
-
-    /* === OTHERS === */
     public function defaultLanguage(Request $request)
     {
         $rules = [
@@ -119,9 +115,6 @@ class SettingController extends Controller
         return Redirect::to('setting')->with('message', trans('invoice.data_was_updated'));
     }
 
-    /* === END OTHERS === */
-
-    /* === AJAX === */
     public function defaultCurrency(Request $request)
     {
         $update = UserSetting::where('user_id', Auth::id())->first();
@@ -137,6 +130,4 @@ class SettingController extends Controller
 
         return view('settings.currency', $data);
     }
-
-    /* === END AJAX === */
 }

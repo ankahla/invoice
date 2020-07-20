@@ -6,7 +6,7 @@
 			<img src="{{ asset('upload/' . $logo->name ) }}" class="img img-responsive thumbnail col-md-3">
 		</div>
 
-	<form action="{{ 'upload/' . $logo->id }}" role="form" method="post" class="solsoForm" enctype="multipart/form-data">
+	<form action="{{ 'upload-logo/' . $logo->id }}" role="form" method="post" class="solsoForm" enctype="multipart/form-data">
 		@method('PUT')
 	@else	
 	
@@ -14,8 +14,7 @@
 			<strong>{{ trans('invoice.message') }}: </strong> {{ trans('invoice.message_logo') }}
 		</div>		
 	
-		<form action="{{ 'upload' }}" role="form" method="post" class="solsoForm" enctype="multipart/form-data">
-			@method('PUT')
+		<form action="{{ 'upload-logo' }}" role="form" method="post" class="solsoForm" enctype="multipart/form-data">
 	@endif
 
 		<div class="form-group">

@@ -16,14 +16,6 @@ use Illuminate\Support\Facades\App;
 */
 
 Route::get('/', 'WebsiteController@index')->name('homepage');
-//Route::get('login',			'LoginController@index')->name('index', 'login');
-//Route::get('admin',			'AdminController@index')->name('admin');
-//Route::resource('dashboard',					'DashboardController');
-//Route::resource('create-account',	'LoginController@createAccount');
-//Route::post('auth',				'LoginController@auth')->name('auth', 'auth');
-//Route::resource('logout',			'LoginController@logout');
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Auth::routes();
 
@@ -67,7 +59,6 @@ Route::group(array('before' => 'auth'), function () {
         Route::resource('client', 'ClientController');
         Route::resource('currency', 'CurrencyController');
         Route::resource('invoice', 'InvoiceController');
-        //Route::resource('invoiceStatus', 'InvoiceStatusController');
         Route::resource('newsletter', 'NewsletterController');
         Route::resource('product', 'ProductController');
         Route::resource('payment', 'PaymentController');
@@ -76,7 +67,7 @@ Route::group(array('before' => 'auth'), function () {
 
         Route::post('email/{id}', 'EmailController@show');
         Route::get('pdf/{id}', 'PdfController@show');
-        Route::resource('upload', 'UploadController');
+        Route::resource('upload-logo', 'UploadController');
 
         Route::post('invoice/add-payment/{id}', 'InvoiceController@addPayment');
         Route::post('invoice/edit-status/{id}', 'InvoiceController@updateStatus');
